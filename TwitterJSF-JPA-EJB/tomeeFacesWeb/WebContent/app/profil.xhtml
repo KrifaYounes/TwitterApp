@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:cc="http://java.sun.com/jsf/composite">
+	
+<h:head>
+	<title>Twitter Profil</title>
+	<link media="all" rel="stylesheet" type="text/css" href="../resources/css/style.css" />
+</h:head>
+
+<h:body>
+<div id="header">
+    <ui:insert name="header" >
+		<ui:include src="menu.xhtml"/>  
+    </ui:insert>
+</div>   
+    
+<div id="page">
+
+<h:form id="form" styleClass="inscription">
+		
+    <p:panel  styleClass="register" header="Modifier votre profil" >
+        <h:panelGrid id = "panelGrid" columns="2" cellspacing="8"  >
+         	        
+         	   
+         	<h:outputLabel 	for="nom" 	value="Changez votre nom" /><br/>
+            <p:inputText 	id="nom" 		value="#{loginManagedBean.user.nom}">
+				<p:ajax 	event="blur" 	update="loginNom"/>
+			</p:inputText>
+			<p:message 		for ="nom" 	id="loginNom"/>
+			       			
+         	<h:outputLabel 	for="email" 	value="Changez votre adresse mail" /><br/>
+            <p:inputText 	id="email" 		value="#{loginManagedBean.user.email}">
+				<p:ajax event="blur" update="emailMess" />
+			</p:inputText>
+			<p:message 		for ="email" 	id="emailMess"/>
+				
+   			<h:outputText	value="Changez l'image de votre profil" /><br/>
+   							
+   			<h:form  enctype="multipart/form-data"> 
+				<p:fileUpload fileUploadListener="#{loginManagedBean.handleFileUpload}"
+           	 		mode="advanced"  
+					invalidSizeMessage="Le fichier ne doit pas dépasser 5Mo"            	
+					invalidFileMessage="Vous devez choisir une image"
+					update="messages"
+            		sizeLimit="400000000"   
+            		allowTypes="/(\.|\/)(gif|jpe?g|png|JPG)$/"/> 
+            	<p:growl id="messages" showDetail="true"/>
+			</h:form><br/>	
+   			
+            <p:commandButton value="Modifier" styleClass="tweeter" update="@form" action="#{loginManagedBean.updateUser}"/>
+        				<!-- a enlever -->			
+        	
+  			<p:growl id="messages" showDetail="true"/>
+        	
+        	<p:messages  globalOnly="true"/>
+             
+        </h:panelGrid>
+        
+    </p:panel>
+    
+</h:form>
+    
+    
+</div>
+    
+</h:body>
+
+</html>

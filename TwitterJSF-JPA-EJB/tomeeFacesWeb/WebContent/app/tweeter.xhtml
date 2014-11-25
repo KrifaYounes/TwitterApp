@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:cc="http://java.sun.com/jsf/composite">
+	
+        <p:panelGrid style="font-size:13px;max-width:330px;float:left;border:15px" >  
+	        <p:row>  
+	            <p:column style="padding:10px" colspan="17">
+	            	<p:graphicImage value="#{tweetManagedBean.myImage}" styleClass="image_profil"/>
+		            <h:outputText> <strong>  #{loginManagedBean.user.nom} </strong></h:outputText><br/>
+		            <h:outputText> <a href="profil.xhtml">Modifier votre profil </a></h:outputText>
+		        </p:column>  
+	        </p:row>  
+	        
+	        <p:row>  
+	        	<p:column style="padding:10px" colspan="2"><strong>#{tweetManagedBean.nb_tweet}</strong> <br/><a href="../app/main.xhtml" >TWEETS</a></p:column>  
+	            <p:column style="padding:10px" colspan="2"><strong>#{followBean.nb_follower}</strong><br/><a href="../app/follower.xhtml?login=#{loginManagedBean.user.login}" >ABONNES</a></p:column>  
+	            <p:column style="padding:10px" colspan="2" ><strong>#{followBean.nb_following}</strong><br/><a href="../app/following.xhtml?login=#{loginManagedBean.user.login}" >ABONNEMENTS</a></p:column>  
+	        </p:row>  
+	        
+	        <p:row> 
+	          	<p:column style="padding:10px" colspan="17">   
+	          		<p:inputTextarea 	rows="2" 
+	          							minQueryLength="1"  
+	          							cols="44" 
+	          							counter="counter"  
+	          							maxlength="140"       
+		    							counterTemplate="{0}"  
+		    							autoResize="true" 
+		    							value="#{tweetManagedBean.message}" >
+		    							
+		    		</p:inputTextarea> <br/>
+		    		<p:graphicImage url="../resources/images/twitter.jpg" style="padding-top:10px" width="45px"  height="30px"/><p:spacer width="80" height="0" /> 
+		    		<h:outputText id="counter" /><p:spacer width="10" height="0" /> 
+		   	 		<p:commandButton  value="Tweeter" style="color:#3CB8EE" styleClass="tweeter" update="@form" action="#{tweetManagedBean.tweeter}"/>
+	        	 
+		    	</p:column>
+	        </p:row>
+	        
+	        <p:row>
+		        <p:column style="padding:10px" colspan="17">
+		        		<h:outputText><a href="users.xhtml">Chercher des amies </a></h:outputText>
+		        </p:column>
+	        </p:row>
+	         <p:row >
+		        <p:column style="padding:10px" colspan="17">
+	        		        <ui:include src="tendance.xhtml"/>
+		        </p:column>
+	        </p:row>
+	        
+    	</p:panelGrid>
+		<p:growl id="messages" showDetail="false" life="2000"  />
+		
+</html>

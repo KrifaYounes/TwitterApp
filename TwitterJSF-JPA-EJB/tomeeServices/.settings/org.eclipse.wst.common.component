@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="tomeeServices">
+        <wb-resource deploy-path="/" source-path="/ejbModule" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/" source-path="/.apt_generated"/>
+        <property name="java-output-path" value="/tomeeServices/build/classes"/>
+        <property name="ClientProject" value="was8CommonsClient"/>
+        <property name="ClientJARURI" value="was8CommonsClient.jar"/>
+    </wb-module>
+</project-modules>

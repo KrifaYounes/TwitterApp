@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:cc="http://java.sun.com/jsf/composite">
+	
+<h:form   style="margin-left:20px; padding-top:55px">        
+    <p:menu   value="Twitter">  
+        <p:menuitem value="Mes tweets"  url="main.xhtml"/>          
+        <p:separator />  
+        
+        <p:menuitem value="Mes abonnements"  url="following.xhtml" />        
+        <p:separator />  
+        
+        <p:menuitem value="Mes abonnés"  url="follower.xhtml" />        
+         <p:separator />  
+         
+        <p:menuitem value="Utilisateurs"  url="users.xhtml" />  
+        <p:separator />  
+       
+        <p:menuitem value="Editer Profil"   url="profil.xhtml" />  
+        <p:separator />  
+        <p:menuitem value="Se déconnecter" action="#{loginManagedBean.logout}" icon="ui-icon-extlink"/>  
+    </p:menu >  
+    
+</h:form>
+
+</html>

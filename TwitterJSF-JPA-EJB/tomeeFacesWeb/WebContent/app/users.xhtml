@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:cc="http://java.sun.com/jsf/composite">
+	
+<h:head>
+	<title>Twitter Home</title>
+	<link media="all" rel="stylesheet" type="text/css" href="../resources/css/style.css" />
+</h:head>
+
+<h:body>
+<div id="header">
+    <ui:insert name="header" >
+		<ui:include src="menu.xhtml"/>  
+    </ui:insert>
+</div>     
+   
+<div id="page">
+  	<ui:insert name="page">
+  	<h:form>
+	<p:panel style="min-height:700px; background-color: rgba(0, 0, 0, 0.3);border-color: rgba(0, 0, 0, 0.3)">
+          <ui:include src="tweeter.xhtml"/>
+
+    	  <p:dataTable 	id="datatable" 
+	     				style="margin-left:330px; font-size:15px;" 
+	     				scrollWidth="470"
+	     				var="user" 
+	     				emptyMessage="Aucun utilisateur à suivre"
+	     				value="#{followBean.listUserNotFollow}">  
+        	<p:column footerText="Twitter" headerText="Utilisateurs">  
+                  	<p class="zone_user"><h:outputText>
+                  	 #{user.nom} <a href="mur.xhtml?login=#{user.login}">@#{user.login}</a> </h:outputText></p>
+    	  			<p:commandButton value="Suivre" styleClass="tweeter" update="@form" action="#{followBean.suivre(user.email)}"/>
+           	</p:column>   
+    	</p:dataTable> 
+    	
+    	</p:panel>
+	  </h:form>
+	  </ui:insert>
+</div> 
+
+    
+</h:body>
+
+</html>

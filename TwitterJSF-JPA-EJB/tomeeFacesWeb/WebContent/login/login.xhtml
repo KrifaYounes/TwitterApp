@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html 	xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:p="http://primefaces.org/ui">
+	 
+<h:head>
+	<title><ui:insert name="title">Authentification Twitter</ui:insert></title>
+	<link media="all" rel="stylesheet" type="text/css" href="../resources/css/style.css" />
+</h:head>
+
+<h:body>
+
+<div id="header">
+    <ui:insert name="header">
+    </ui:insert>
+</div>
+
+<div id="page">
+	<ui:insert name="page">
+		<div id="gif" style="visibility: hidden; margin: 0 auto;">
+   			<img src="../resources/images/ajax-loader.gif"/>
+		</div>
+		<div id="bienvenue">
+			<h1>Bienvenue sur Twitter.</h1> 
+			<p>	Découvrez ce qui se passe en ce moment chez les personnes et dans les organismes qui vous tiennent à cœur.</p>
+		</div>
+
+		<h:form id="inscription" styleClass="connexion">
+   			<p:panel id="panel" >
+				<h:panelGrid columns="2" cellspacing="8">
+       				
+       				<p:outputLabel 	for ="email" 	value="Adresse email : " />
+					<p:inputText 	id  ="email"  autocomplete="on" value="#{loginManagedBean.email}" style="background-color:#FEFCBB"/>
+					
+					<h:outputLabel 	for="password" 	value="Mot de passe : " />
+					<p:password 	id  ="password" value="#{loginManagedBean.password}" style="background-color:#FEFCBB"/>
+					            
+            		<p:commandButton id="valide_inscrip" value="Se connecter"  update="panel" action="#{loginManagedBean.login}" styleClass="bouton" onclick=" document.getElementById('gif').style.visibility='visible';"/>   
+        			<h:outputText><a href="register.xhtml"> Nouveau sur Twitter ? Inscrivez-vous</a> </h:outputText> 
+        		</h:panelGrid>
+        	<p:messages  globalOnly="true" />
+        	
+        	</p:panel>
+		</h:form>
+		
+		
+	
+	</ui:insert>
+</div>	
+                 
+</h:body>
+
+</html>

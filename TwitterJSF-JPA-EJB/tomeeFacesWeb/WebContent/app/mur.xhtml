@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:cc="http://java.sun.com/jsf/composite">
+	
+<h:head>
+	<title>Twitter Home</title>
+	<link media="all" rel="stylesheet" type="text/css" href="../resources/css/style.css" />
+</h:head>
+
+<h:body>
+<div id="header">
+    <ui:insert name="header">
+		<ui:include src="menu.xhtml"/>  
+    </ui:insert>
+</div>   
+    
+<div id="page">
+	
+    <h:form>
+	<p:panel  styleClass="panel">
+         <ui:include src="information.xhtml"/>
+       
+		 <p:dataTable 	id="datatable" 
+	     				style="margin-left:330px; font-size:15px;" 
+	     				scrollWidth="470"
+	     				emptyMessage="Aucun tweet posté par #{twitterUserBean.user.nom} " 
+	     				var="tweet" 
+	     				value="#{twitterUserBean.listTweet}">  
+        	
+        	<p:column footerText="Twitter" headerText="Mur de @#{twitterUserBean.login}" style="padding:5px">  
+	          	<h:outputText>
+	            	<strong>#{tweet.user_tweeter.nom}</strong><a href="mur.xhtml?login=#{tweet.user_tweeter.login}"> @#{tweet.user_tweeter.login} </a>
+	            </h:outputText><br/>
+	              <p class="zone_tweet"><h:outputText escape="false" value="#{tweet.message}"/> </p>
+
+	            <h:outputText value="#{tweet.date_creation}">
+	            	<f:convertDateTime pattern="'Tweeté le' dd MMMM yyyy 'à' HH:mm:ss" />           	
+	            </h:outputText><br/>
+	            
+	            <p:commandLink styleClass="zone" update="@form" value="Retweeter" action="#{tweetManagedBean.retweeter(tweet.id)}"/><p:spacer width="10px" />
+
+        	</p:column>    
+    	</p:dataTable> 
+	    			    	
+    </p:panel>  
+    
+</h:form> 
+</div>
+    
+</h:body>
+
+</html>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf13517634449060" configfile="/tomeeFacesWeb/WebContent/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="login/login.xhtml" x="338" y="178" id="pf13517636875001" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf13517638446404 pf13631877690652" inlinks="pf13517638446404 pf13623350467660 pf13631170694535" path="/login/login.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="*" x="122" y="178" id="pf13623350467661" outlinks="pf13623350467660" path="*"/>
+  <nodes xsi:type="pageflow:PFPage" name="login/register.xhtml" id="pf13631156454161" referenceLink="//@navigationRule.4/@navigationCase.0/@toViewId|" outlinks="pf13631156454162 pf13631170694535" inlinks="pf13631156454162" path="/login/register.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="app/main.xhtml" id="pf13631361846373" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf13631673462340 pf13631877690652" path="/app/main.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="app/profil.xhtml" id="pf13631673462341" referenceLink="//@navigationRule.6/@navigationCase.0/@toViewId|" outlinks="pf13631673462340 pf13631673462342" inlinks="pf13631673462342" path="/app/profil.xhtml"/>
+  <links id="pf13623350467660" target="pf13517636875001" source="pf13623350467661" outcome="logoutSuccess" redirect="true" fromaction="#{loginManagedBean.logout}"/>
+  <links id="pf13517638446404" target="pf13517636875001" source="pf13517636875001" outcome="loginFailed">
+    <bendPoints d1Height="-36" d2Height="-36"/>
+    <bendPoints d1Width="-64" d1Height="-36" d2Width="-64" d2Height="-36"/>
+    <bendPoints d1Width="-64" d2Width="-64"/>
+  </links>
+  <links id="pf13631156454162" target="pf13631156454161" source="pf13631156454161" outcome="failedCreate"/>
+  <links id="pf13631170694535" target="pf13517636875001" source="pf13631156454161" outcome="successCreate" redirect="true"/>
+  <links id="pf13631673462340" target="pf13631361846373" source="pf13631673462341" outcome="successUpdate" redirect="true"/>
+  <links id="pf13631673462342" target="pf13631673462341" source="pf13631673462341" outcome="failedUpdate"/>
+  <links id="pf13631877690652" target="pf13631361846373" source="pf13517636875001" outcome="loginSuccess" redirect="true"/>
+</pageflow:Pageflow>

@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:cc="http://java.sun.com/jsf/composite">
+	
+     <p:panelGrid  style="font-size:13px;float:left;border:15px">  
+	        <p:row>  
+	            <p:column style="padding:10px" colspan="17">	            
+		            <p:graphicImage url="../resources/images/profil_male.png" styleClass="image_profil"/>
+		            <h:outputText> <strong> #{twitterUserBean.user.nom}</strong></h:outputText><br/>		            
+		        </p:column>  
+	        </p:row>  
+	         <p:row>  
+	         	<p:column style="padding:10px" colspan="2">#{twitterUserBean.nb_tweet} <br/><a href="../app/mur.xhtml?login=#{twitterUserBean.user.login}" >TWEETS</a></p:column>  
+	            <p:column style="padding:10px" colspan="2">#{twitterUserBean.nb_follower}<br/><a href="../app/follower_user.xhtml?login=#{twitterUserBean.user.login}" >ABONNES</a></p:column>  
+	            <p:column style="padding:10px" colspan="2" >#{twitterUserBean.nb_following}<br/><a href="../app/following_user.xhtml?login=#{twitterUserBean.user.login}" >ABONNEMENTS</a></p:column>  
+	        </p:row>  
+	        <p:row>  
+	         	<p:column style="padding:10px" colspan="17">
+	            
+                     <ui:include src="tendance.xhtml"/>
+                     </p:column>
+      </p:row>
+    	</p:panelGrid>
+		<p:growl id="messages"  showDetail="false" life="2000" redisplay="true" />
+		
+</html>
